@@ -9,4 +9,7 @@ public class User {
     List<Tweet> tweets;
     List<User> followers;
     List<User> following;
+
+    public User() {
+    }
 }
