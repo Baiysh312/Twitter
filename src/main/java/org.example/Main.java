@@ -6,9 +6,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Twitter twitter = new Twitter();
-        System.out.println("veedite typ operation:\n1- registration\n2-log in");
+        twitter.start();
+        System.out.println("veedite typ operation:\n1- registration\n2-login");
         int operation= scan.nextInt();
+
         switch (operation) {
+
             case 1:
                 System.out.printf("vvedite name");
                 String name = scan.next();
@@ -24,6 +27,8 @@ public class Main {
                 System.out.printf("null");
 
                 break;
+            default:
+                System.out.printf("нет такой команды");
         }
     }
 }

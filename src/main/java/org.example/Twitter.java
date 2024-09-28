@@ -10,10 +10,13 @@ import java.util.Optional;
 
 @Getter
 @Setter
-public class Twitter {
+public class Twitter extends Thread {
     List<User> users = new ArrayList<>();
     List<Tweet> tweets = new ArrayList<>();
+    @Override
+    public void run(){
 
+    }
     public void addUser(User user) {
         System.out.println(user);
         if (user != null) {

@@ -3,38 +3,47 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tweet {
+public class   Tweet {
+
+
     private String content;
     private User author;
+    private List<Tweet> replies;
+    private List<User> likes;
 
     public Tweet(String content, User author) {
         this.content = content;
         this.author = author;
+        this.replies = new ArrayList<>();
+        this.likes = new ArrayList<>();
     }
 
-    List<RepliesTweet> replies = new ArrayList<>();
-    List<User> likes = new ArrayList<>();
 
-    public void reply(User user, String message)
-    {
-        replies.add(new RepliesTweet(user,message));
+
+
+    public void reply(User user, String message) {
+        Tweet reply = new Tweet(message, user);
+        replies.add(reply);
     }
-    public void like(User user){
-        if(likes.stream().anyMatch(us ->us.equals(user))){
-            System.out.println("polzovatel uzhe laiknul");
-        }else likes.add(user);
+
+    public void like(User user) {
+        if (!likes.contains(user)) {
+            likes.add(user);
+        }
     }
-    public void unlike(User user){
-        if(likes.stream().anyMatch(us ->us.equals(user))){
+
+    public void unlike(User user) {
+        if(likes.contains(user)) {
             likes.remove(user);
         }
     }
 
     @Override
     public String toString() {
-        return "Tweet{" +
-                "content='" + content + '\'' +
-                ", author=" + author +
-                '}';
+        return author + ": " + content + " (Likes: " + likes.size() + ")";
+    }
+
+    public List<Tweet> getReplies() {
+        return replies;
     }
 }
