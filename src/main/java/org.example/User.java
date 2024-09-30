@@ -15,6 +15,9 @@ public class User {
     private List<User> followers;
     private List<User> following;
 
+    public User() {
+    }
+
     public User(String username, String fullName, String password) {
         this.username = username;
         this.fullName = fullName;
